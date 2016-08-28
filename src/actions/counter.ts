@@ -1,14 +1,18 @@
-import { INCREMENT_COUNTER, DECREMENT_COUNTER } from '../constants';
+import {
+    IncrementCounterAction,
+    DecrementCounterAction
+} from '../constants';
 
-
-export function increment() {
+export function increment(by: number = 1) : IncrementCounterAction {
   return {
-    type: INCREMENT_COUNTER,
+    type: 'App/INCREMENT_COUNTER',
+    by: by
   };
 }
 
-export function decrement() {
+export function decrement(by: number = 1) : DecrementCounterAction {
   return {
-    type: DECREMENT_COUNTER,
+    type: 'App/DECREMENT_COUNTER',
+    by: by
   };
 }

@@ -4,6 +4,7 @@ const connect = require('react-redux').connect;
 import { increment, decrement } from '../actions/counter';
 import Counter from '../components/counter';
 import Container from '../components/container';
+import {Counter as CounterModel} from '../reducers/counter';
 
 interface ICounterPageProps extends React.Props<any> {
   counter: number;
@@ -11,9 +12,9 @@ interface ICounterPageProps extends React.Props<any> {
   decreaseCounter: () => void;
 };
 
-function mapStateToProps(state) {
+function mapStateToProps(state : { counter : CounterModel }) {
   return {
-    counter: state.counter.get('count'),
+    counter: state.counter.value
   };
 }
 

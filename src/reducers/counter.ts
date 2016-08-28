@@ -1,30 +1,60 @@
 import {
-  INCREMENT_COUNTER,
-  DECREMENT_COUNTER,
-  LOGOUT_USER
+    LOGOUT_USER,
+    Status,
+    OK,
 } from '../constants';
-import { fromJS } from 'immutable';
+
+import * as c from '../constants';
+import { fromJS, Record } from 'immutable';
 
 
-const INITIAL_STATE = fromJS({
-  count: 0,
-});
+type CounterParams = {
+    value?: number,
+    status?: Status,
+};
+export class Counter extends Record({ value: 0, status: OK }) {
+    value: number;
+    status: Status;
 
-function counterReducer(state = INITIAL_STATE, action = { type: '' }) {
-  switch (action.type) {
+    constructor(params?: CounterParams) {
+        params ? super(params) : super();
+    }
 
-  case INCREMENT_COUNTER:
-    return state.update('count', (value) => value + 1);
+    with(values: CounterParams) {
+        return this.merge(values) as this;
+    }
+}
 
-  case DECREMENT_COUNTER:
-    return state.update('count', (value) => value - 1);
 
-  case LOGOUT_USER:
-    return state.merge(INITIAL_STATE);
+type CounterAction =
+    c.SetStatusAction |
+    c.IncrementCounterAction |
+    c.DecrementCounterAction |
+    c.OtherAction
 
-  default:
-    return state;
-  }
+const INITIAL_STATE = new Counter();
+
+function counterReducer(
+    state = INITIAL_STATE,
+    action : CounterAction = c.OtherAction)
+: Counter {
+    switch (action.type) {
+
+    case 'App/SET_STATUS':
+        return state.with({status: action.payload});
+
+    case 'App/INCREMENT_COUNTER':
+        return state.with({value: state.value + action.by});
+
+    case 'App/DECREMENT_COUNTER':
+        return state.with({value: state.value - action.by});
+
+    case LOGOUT_USER:
+        return INITIAL_STATE;
+
+    default:
+        return state;
+    }
 }
 
 
