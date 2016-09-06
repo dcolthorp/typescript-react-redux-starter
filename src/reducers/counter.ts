@@ -30,6 +30,7 @@ type CounterAction =
     c.SetStatusAction |
     c.IncrementCounterAction |
     c.DecrementCounterAction |
+    c.LogoutUserAction |
     c.OtherAction
 
 const INITIAL_STATE = new Counter();
@@ -49,7 +50,7 @@ function counterReducer(
     case 'App/DECREMENT_COUNTER':
         return state.with({value: state.value - action.by});
 
-    case LOGOUT_USER:
+    case 'App/LOGOUT_USER':
         return INITIAL_STATE;
 
     default:
