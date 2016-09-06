@@ -41,16 +41,16 @@ function counterReducer(
 : Counter {
     switch (action.type) {
 
-    case 'App/SET_STATUS':
+    case c.SET_STATUS:
         return state.with({status: action.payload});
 
-    case 'App/INCREMENT_COUNTER':
+    case c.INCREMENT_COUNTER:
         return state.with({value: state.value + action.by});
 
-    case 'App/DECREMENT_COUNTER':
+    case c.DECREMENT_COUNTER:
         return state.with({value: state.value - action.by});
 
-    case 'App/LOGOUT_USER':
+    case c.LOGOUT_USER:
         return INITIAL_STATE;
 
     default:
