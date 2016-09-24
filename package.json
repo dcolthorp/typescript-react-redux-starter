@@ -44,6 +44,7 @@
     "helmet": "^2.0.0",
     "http-proxy": "^1.13.2",
     "typed-immutable-record": "0.0.5",
+    "typescript": "^2.0.3",
     "winston": "^2.1.1"
   },
   "devDependencies": {

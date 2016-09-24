@@ -8,26 +8,30 @@ export type Status = OK | Warn;
 
 export type SET_STATUS = 'App/SET_STATUS';
 export const SET_STATUS : SET_STATUS = 'App/SET_STATUS';
+
+export type INCREMENT_COUNTER = 'App/INCREMENT_COUNTER';
+export const INCREMENT_COUNTER : INCREMENT_COUNTER = 'App/INCREMENT_COUNTER';
+
+export type DECREMENT_COUNTER = 'App/DECREMENT_COUNTER';
+export const DECREMENT_COUNTER : DECREMENT_COUNTER = 'App/DECREMENT_COUNTER';
+
+export type OtherAction = { type: '' };
+
 export type SetStatusAction = {
     type: SET_STATUS,
     payload: Status
 };
 
-export type INCREMENT_COUNTER = 'App/INCREMENT_COUNTER';
-export const INCREMENT_COUNTER : INCREMENT_COUNTER = 'App/INCREMENT_COUNTER';
 export type IncrementCounterAction = {
     type: INCREMENT_COUNTER,
     by: number
 };
 
-export type DECREMENT_COUNTER = 'App/DECREMENT_COUNTER';
-export const DECREMENT_COUNTER : DECREMENT_COUNTER = 'App/DECREMENT_COUNTER';
 export type DecrementCounterAction = {
     type: DECREMENT_COUNTER,
     by: number
 };
 
-export type OtherAction = { type: '' };
 export const OtherAction : OtherAction = { type: '' };
 
 export const LOGIN_USER_PENDING = 'App/LOGIN_USER_PENDING';
